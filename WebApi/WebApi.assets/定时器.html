@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      div {
+        width: 300px;
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <input type="number"> <button>发送</button>
+    </div>
+    <script>
+      // function callback() {
+      //   console.log("世界你好");
+      // }
+      // setTimeout(callback, 2000);
+      let time = 3;
+      let btn = document.querySelector('button');
+      btn.addEventListener('click', function() {
+        btn.disabled = true;
+        btn.innerHTML = '还剩下'+time+'秒';
+        let timer = setInterval(function() {
+          if (time==0){
+            // 重新恢复
+            btn.disabled = false;
+            btn.innerHTML = "发送";
+            time =3;
+            clearInterval(timer);
+          }else {
+            time--;
+            btn.innerHTML = '还剩下'+time+'秒';
+          }
+      }, 1000);
+      });
+    </script>
+  </body>
+
+</html>

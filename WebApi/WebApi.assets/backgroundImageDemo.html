@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background: url(backgroundImage/1.webp);
+      background-size: 100%;
+      transition: all .2s;
+    }
+    div {
+      width: 1000px;
+      height: 100px;
+      margin: 100px auto;
+    }
+    div img {
+      float: left;
+      width: 200px;
+      height: 100px;
+      cursor: pointer;
+      box-sizing: border-box;
+      border: 4px solid #fff;
+
+      transition: all .2s;
+    }
+    div img:nth-child(n+1) {
+      margin-left: -2px;
+    }
+    div img:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="backgroundImage/1.webp" alt="">
+    <img src="backgroundImage/2.webp" alt="">
+    <img src="backgroundImage/3.webp" alt="">
+    <img src="backgroundImage/4.webp" alt="">
+    <img src="backgroundImage/5.webp" alt="">
+  </div>
+  <script>
+    let imgs = document.getElementsByTagName('img');
+    let body = document.body;
+    for(let i=0; i<imgs.length; i++){
+      imgs[i].onmouseover = function(){
+        body.style.backgroundImage = "url(backgroundImage/"+(i+1)+".webp)"
+      }
+    }
+  </script>
+</body>
+</html>

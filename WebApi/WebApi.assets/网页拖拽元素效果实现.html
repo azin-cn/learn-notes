@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        transform: translateX(-50%);
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <script>
+      let div = document.querySelector('div');
+
+
+      // 鼠标发生按下的事件
+      let move = true;
+      div.addEventListener('mousedown', function (e) {
+        let x = e.clientX - this.offsetLeft;
+        let y = e.clientY - this.offsetTop;
+
+        // 监听鼠标在文档中的位置
+        document.addEventListener('mousemove', move);
+
+        document.addEventListener('mouseup', function () {
+          document.removeEventListener('mousemove', move);
+        });
+
+        function move(e) {
+          div.style.top = e.clientY - y + 'px';
+          div.style.left = e.clientX - x + 'px';
+          console.log('x: '+x + ' y:' +y);
+        }
+      });
+    </script>
+  </body>
+
+</html>
